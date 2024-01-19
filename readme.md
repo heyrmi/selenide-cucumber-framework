@@ -8,3 +8,8 @@ A simple selenide cucumber framework for no hassle testing on local and lambdate
 - Support different scenarios 
 - Add browsers options support
 - Add options to easily test with different combinations
+
+### To run tests from local terminal 
+```
+mvn test -Dusername=YourUserName -Daccesskey=YourAccessKey -Dselenide.browser=io.github.heyrmi.driver.RemoteDriver
+```
