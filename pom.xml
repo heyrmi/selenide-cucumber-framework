@@ -96,4 +96,53 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+		<profile>
+			<id>jib-push-to-dockerhub</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.google.cloud.tools</groupId>
+						<artifactId>jib-maven-plugin</artifactId>
+						<version>3.4.0</version>
+						<configuration>
+							<from>
+								<image>openjdk:21</image>
+							</from>
+						</configuration>
+						<executions>
+							<execution>
+								<id>push-custom-tag</id>
+								<phase>package</phase>
+								<configuration>
+									<to>
+										<image>docker.io/heyrmi/${app.image.name}:${app.image.tag}</image>
+									</to>
+								</configuration>
+								<goals>
+									<goal>build</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>push-latest-tag</id>
+								<phase>package</phase>
+								<configuration>
+									<to>
+										<image>docker.io/heyrmi/${app.image.name}:latest</image>
+									</to>
+								</configuration>
+								<goals>
+									<goal>build</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+        </profiles>
 </project>
